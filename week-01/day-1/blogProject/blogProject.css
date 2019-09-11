@@ -1,0 +1,36 @@
+Body {
+    padding:0;
+    margin:0;
+}
+
+#Head {
+    background-color: gray;
+    padding:0;
+    margin:0;
+}
+#Head h1 {
+    padding:0 10%;
+    margin:0;
+}
+main {
+    padding: 0 10%;
+    margin:0;
+}
+textarea {
+    resize:none;
+}
+.oldposts{
+    border: solid black 1px;
+    padding: 5px;
+    margin: 10px 5px 20px 0px;
+}
+.oldposts p{
+    margin: 0;
+}
+h4 {
+    margin:0;
+    padding:10;
+}
+h2 {
+    margin:0;
+}
