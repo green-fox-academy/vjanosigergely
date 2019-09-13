@@ -32,6 +32,17 @@ public class DrawDiamond {
 */
         }
         System.out.println();
+        for (int i = 0; i < ((diamondHeight - 1) / 2) ; i++) {
+
+            for (int j = 0; j <= i; j++) {
+                System.out.print(" ");
+            }
+
+            for (int j = 0; j < (diamondHeight/2 + 1) ; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 }
 // Write a program that reads a number from the standard input, then draws a
