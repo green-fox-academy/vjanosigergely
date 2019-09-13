@@ -38,7 +38,7 @@ public class DrawDiamond {
                 System.out.print(" ");
             }
 
-            for (int j = 0; j < (diamondHeight/2 + 1) ; j++) {
+            for (int j = 0; j < (diamondHeight/2 + 1 - 2*i) ; j++) {
                 System.out.print("*");
             }
             System.out.println();
