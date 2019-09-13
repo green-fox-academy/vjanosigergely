@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class AverageOfInput {
@@ -11,8 +12,18 @@ public class AverageOfInput {
             sum = sum + n;
         }
 
-        System.out.println(sum);
-        System.out.println(sum/5);
+        System.out.println("Their sum is" + sum);
+        System.out.println("Their average is" + sum/5);
+
+        System.out.println("Please provide 5 integers in 5 lines!");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        int d = scanner.nextInt();
+        int e = scanner.nextInt();
+
+        System.out.println(a+b+c+d+e);
+        System.out.println((a+b+c+d+e)/5);
     }
 
 }
