@@ -8,6 +8,7 @@ public class CountFromToJava {
         System.out.println("Please give me a bigger integer!");
         int m = scanner.nextInt();
 
+
         if (m <= n) {
             System.out.println("The second number should be bigger");
         }
