@@ -22,7 +22,21 @@ public class Reverse {
             reversed[i] = original[length-i-1];
         }
 
-        String backwards = Arrays.toString(reversed).replace("," , "");
+
+
+        /*StringBuilder builder = new StringBuilder();
+
+        for (String string : reversed) {
+            if (builder.length() > 0) {
+                builder.append("");
+            }
+            builder.append(string);
+        }
+        String string = builder.toString()
+
+        String string;*/
+
+        String backwards = Arrays.toString(reversed).replace(", " , "").replace("[", "").replace("]", "");
 
 
         return backwards;
