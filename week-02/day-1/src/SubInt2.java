@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class SubInt {
+public class SubInt2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How long do you want your array to be?");
@@ -26,39 +26,27 @@ public class SubInt {
     }
 
     public static int[] numberSearcher(String numberSearched, String[] searchingField) {
-        int arrayLengthCounter = 0;
-
+        int reverseArray [] = new int [searchingField.length];
         for (int i = 0; i <searchingField.length ; i++) {
-            if (searchingField[i].contains(numberSearched)){
-                arrayLengthCounter = arrayLengthCounter +1;
-            };
+            reverseArray[i] = -1;
         }
-        int reverseArray [] = new int [arrayLengthCounter];
-
         for (int i = 0; i < searchingField.length ; i++) {
 
-            if (searchingField[i].contains(numberSearched)) {
-                for (int j = i; j < arrayLengthCounter ; j++) {
-                    reverseArray[j] = i;
-                }
-             }
-
-            /*for (int j = 0; j < searchingField.length; j++) {
+            for (int j = 0; j < searchingField.length; j++) {
                 for (int k = 0; k < searchingField[j].length(); k++) {
                     if (searchingField[j].charAt(k) == numberSearched.charAt(0)) {
                         if (reverseArray[i] == -1) {
                             reverseArray[i] = j;
                             break;}
-                    }*//*else{
+                    }/*else{
                         reverseArray[i+j+k+1] = -1;
                     }*/
-
+                }
             }
-            return reverseArray;
+        }
+        return reverseArray;
+
     }
-
-
-
 }
 //  Create a function that takes a number and an array of integers as a parameter
 //  Returns the indices of the integers in the array of which the first number is a part of
