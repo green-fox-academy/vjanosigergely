@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.Random;
 import java.util.Scanner;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -8,15 +9,18 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class GoToCenter {
     public static void mainDraw(Graphics graphics) {
 
-        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
-        System.out.println("Please give me the coordinates of 'x' ");
-        int x = scanner.nextInt();
-        System.out.println("Please give me the coordinates of 'y' ");
-        int y = scanner.nextInt();
+        int x;
+        int y;
 
+        for (int i = 0; i < 3; i++) {
+            x = random.nextInt(WIDTH);
+            y = random.nextInt(HEIGHT);
 
-        linesToMiddle(graphics, x , y);
+            linesToMiddle(graphics, x, y);
+
+        }
 
 
         // Create a function that draws a single line and takes 3 parameters:
@@ -25,10 +29,10 @@ public class GoToCenter {
         // Draw at least 3 lines with that function using a loop.
 
 
-
     }
-    public static void linesToMiddle (Graphics graphics, int x, int y) {
-        graphics.drawLine(x, y, WIDTH/2, HEIGHT/2);
+
+    public static void linesToMiddle(Graphics graphics, int x, int y) {
+        graphics.drawLine(x, y, WIDTH / 2, HEIGHT / 2);
     }
 
     // Don't touch the code below
