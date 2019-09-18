@@ -10,14 +10,16 @@ public class PurpleSteps3d {
         // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/assets/r4.png]
 
         int baseSquareSide = 10;
+        int startingX = 10;
 
-        for (int i = 0; i < 6 ; i++) {
-            int multiplier = (int) Math.pow(2, i);
+        for (int i = 0; i < 6; i++) {
             graphics.setColor(new Color(93, 51, 93));
 
-            int growth = i*baseSquareSide;
-            graphics.fillRect(baseSquareSide + growth, baseSquareSide + growth,
-                    baseSquareSide*(i+1),baseSquareSide*(i+1));
+
+            graphics.fillRect(startingX + baseSquareSide * i, startingX + baseSquareSide * i,
+                    baseSquareSide * (i + 1), baseSquareSide * (i + 1));
+
+            startingX = startingX + baseSquareSide * i;
 
         }
 
