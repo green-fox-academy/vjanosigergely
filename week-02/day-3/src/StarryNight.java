@@ -1,31 +1,35 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.Random;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class PurpleSteps3d {
+public class StarryNight {
     public static void mainDraw(Graphics graphics) {
-        // Reproduce this:
-        // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/assets/r4.png]
+        // Draw the night sky:
+        //  - The background should be black
+        //  - The stars can be small squares
+        //  - The stars should have random positions on the canvas
+        //  - The stars should have random color (some shade of grey)
 
-        int baseSquareSide = 10;
+        Random random = new Random();
 
-        for (int i = 0; i < 6 ; i++) {
-            int multiplier = (int) Math.pow(2, i);
-            graphics.setColor(new Color(93, 51, 93));
+        graphics.fillRect(0,0,WIDTH,HEIGHT);
 
-            int growth = i*baseSquareSide;
-            graphics.fillRect(baseSquareSide + growth, baseSquareSide + growth,
-                    baseSquareSide*(i+1),baseSquareSide*(i+1));
+        for (int i = 0; i < 800 ; i++) {
 
+            graphics.setColor(new Color( random.nextInt(255),random.nextInt(255),random.nextInt(255)));
+            graphics.drawRect(random.nextInt(319),random.nextInt(319),1,1);
         }
+
+
 
     }
 
     // Don't touch the code below
-    static int WIDTH = 1000;
-    static int HEIGHT = 1000;
+    static int WIDTH = 320;
+    static int HEIGHT = 320;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
