@@ -1,11 +1,24 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.Scanner;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class GoToCenter {
     public static void mainDraw(Graphics graphics) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please give me the coordinates of 'x' ");
+        int x = scanner.nextInt();
+        System.out.println("Please give me the coordinates of 'y' ");
+        int y = scanner.nextInt();
+
+
+        linesToMiddle(graphics, x , y);
+
+
         // Create a function that draws a single line and takes 3 parameters:
         // The x and y coordinates of the line's starting point and the graphics
         // and draws a line from that point to the center of the canvas.
@@ -14,7 +27,9 @@ public class GoToCenter {
 
 
     }
-    public static void ()
+    public static void linesToMiddle (Graphics graphics, int x, int y) {
+        graphics.drawLine(x, y, WIDTH/2, HEIGHT/2);
+    }
 
     // Don't touch the code below
     static int WIDTH = 320;
