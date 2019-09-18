@@ -1,19 +1,29 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.Random;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class CenteredSquare {
+public class FourRectangles {
 
     public static void mainDraw(Graphics graphics) {
 
-        graphics.setColor(Color.GREEN);
-        graphics.drawRect(WIDTH/2 - 5, HEIGHT/2 - 5, 10, 10);
+        Random random = new Random();
 
+        for (int i = 0; i < 4; i++) {
+            int rectWidth = random.nextInt(WIDTH - 1) + 1;
+            int rectHeight = random.nextInt(HEIGHT - 1) + 1;
+            int x = random.nextInt(WIDTH - rectWidth);
+            int y = random.nextInt(HEIGHT - rectHeight);
 
-        // Draw a green 10x10 square to the canvas' center.
+            graphics.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+            graphics.drawRect(x, y, rectWidth, rectHeight);
 
+        }
+
+        // draw four different size and color rectangles.
+        // avoid code duplication.
 
 
     }
