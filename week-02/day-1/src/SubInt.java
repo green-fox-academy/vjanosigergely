@@ -7,24 +7,24 @@ public class SubInt {
         int a = scanner.nextInt();
 
         System.out.println("What number are you looking for?");
-        String numberSearched = scanner.next();
+        int numberSearched = scanner.nextInt();
 
-        System.out.println("Please input the" + a +  "integers you want to use in your array");
-        String[] searchingField = new String[a];
+        System.out.println("Please input the" + a + "integers you want to use in your array");
+        int[] searchingField = new int[a];
 
         for (int i = 0; i < searchingField.length; i++) {
-            searchingField[i] = scanner.next();
+            searchingField[i] = scanner.nextInt();
         }
-        String[] comeBackArray = numberSearcher(numberSearched, searchingField) ;
+        String[] comeBackArray = numberSearcher(numberSearched, searchingField);
 
 
         //Printing the resulting Array:
         System.out.print("[");
-        for (int i = 0; i < comeBackArray.length ; i++) {
+        for (int i = 0; i < comeBackArray.length; i++) {
 
-            if (i<comeBackArray.length - 1) {
+            if (i < comeBackArray.length - 1) {
                 System.out.print(comeBackArray[i] + ",");
-            }else{
+            } else {
                 System.out.print(comeBackArray[i]);
             }
         }
@@ -32,39 +32,42 @@ public class SubInt {
 
     }
 
-    public static String[] numberSearcher(String numberSearched, String[] searchingField) {
+    public static String[] numberSearcher(int number, int[] Field) {
+
+        String numberSearched = String.valueOf(number);
+        String [] searchingField = new String[Field.length];
+
+        for (int i = 0; i < Field.length ; i++) {
+            searchingField[i] = String.valueOf(Field[i]);
+        }
+
+        //defining new Array's length
         int arrayLengthCounter = 0;
 
-        for (int i = 0; i <searchingField.length ; i++) {
-            if (searchingField[i].contains(numberSearched)){
-                arrayLengthCounter = arrayLengthCounter +1;
-            };
-        }
-        String reverseArray [] = new String [arrayLengthCounter];
+        for (int i = 0; i < searchingField.length; i++) {
+            if (searchingField[i].contains(numberSearched)) {
+                arrayLengthCounter = arrayLengthCounter + 1;
+            }
 
+        }
+
+        //Creating empty reverse array:
+        String reverseArray[] = new String[arrayLengthCounter];
+
+
+        //filling reverse array with proper elements:
         int j = 0;
 
-        for (int i = 0; i < searchingField.length ; i++) {
+        for (int i = 0; i < searchingField.length; i++) {
 
             if (searchingField[i].contains(numberSearched)) {
                 reverseArray[j] = searchingField[i];
-                j = j+1;
-             }
-
-            /*for (int j = 0; j < searchingField.length; j++) {
-                for (int k = 0; k < searchingField[j].length(); k++) {
-                    if (searchingField[j].charAt(k) == numberSearched.charAt(0)) {
-                        if (reverseArray[i] == -1) {
-                            reverseArray[i] = j;
-                            break;}
-                    }*//*else{
-                        reverseArray[i+j+k+1] = -1;
-                    }*/
-
+                j = j + 1;
             }
-            return reverseArray;
-    }
 
+        }
+        return reverseArray;
+    }
 
 
 }
