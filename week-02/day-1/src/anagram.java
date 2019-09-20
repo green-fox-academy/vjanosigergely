@@ -13,7 +13,7 @@ public class anagram {
         char[] firstWord = word1.toCharArray();
         char[] secondWord = word2.toCharArray();
 
-        System.out.println(anagramFinder(firstWord,secondWord));
+        System.out.println(anagramFinder(firstWord, secondWord));
 
 
     }
@@ -33,18 +33,12 @@ public class anagram {
                 }
 
             }
-            if (truthCounter == wordArray1.length) {
-                isAnagram = true;
-
-            }else{
-                isAnagram = false;
-            }
+            isAnagram = truthCounter == wordArray1.length;
         }
 
         return isAnagram;
 
-        }
-
+    }
 
 
 }
