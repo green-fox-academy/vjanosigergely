@@ -24,10 +24,7 @@ public class MapIntroduction2 {
         Lupus (ISBN: 978-1-60309-459-7)
         Red Panda and Moon Bear (ISBN: 978-1-60309-444-3)
         The Lab (ISBN: 978-1-60309-461-0)
-         for (Map.Entry<String,Integer> obj: map2.entrySet()) {
-            System.out.println(obj.getValue());
-            System.out.println(obj.getKey());
-*/
+        */
         for (Map.Entry<String,String> obj: isbn.entrySet()){
             System.out.print(obj.getValue() + " ");
             System.out.println("(ISBN: " + obj.getKey() + ")");
