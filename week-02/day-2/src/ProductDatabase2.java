@@ -33,7 +33,7 @@ public class ProductDatabase2 {
                 moreThan = moreThan + obj.getKey() + " " + obj.getValue() + ",";
             }
         }
-        
+
         System.out.println(moreThan + "]");
     }
 }
