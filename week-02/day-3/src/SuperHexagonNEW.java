@@ -26,127 +26,109 @@ public class SuperHexagonNEW {
 
         int npoints = 6;
 
-        //graphics.setColor(Color.red);
+        //middle flower
+        drawFlower (graphics, xpoints,ypoints,xpointsOriginal,
+        ypointsOriginal, npoints, a, b);
+
+        //top flower
+
+        for (int j = 0; j < ypoints.length ; j++) {
+            ypoints[j] = ypoints[j]- 10*b;
+        }
+
+        drawFlower (graphics, xpoints,ypoints,xpointsOriginal,
+                ypointsOriginal, npoints, a, b);
+
+
+
+
+        //topright flower
+        //bottomright flower
+        //bottom flower
+        //bottommleft flower
+        //topleft flower
+
+
+
+        }
+
+    public static void drawFlower (Graphics graphics, int[] xpoints, int[] ypoints, int[] xpointsOriginal,
+                                    int[] ypointsOriginal, int npoints, int a, int b) {
+
         graphics.drawPolygon(xpoints, ypoints, npoints);
 
-       /* for (int i = 0; i < 3 ; i++) {*/
-
-            //upwards
-            for (int j = 0; j < xpoints.length ; j++) {
-                ypoints[j] = ypoints[j]- 2*b;
-            }
-            //graphics.setColor(Color.BLUE);
-            graphics.drawPolygon(xpoints, ypoints, npoints);
-            for (int j = 0; j < xpoints.length ; j++) {
+        //upwards
+        for (int j = 0; j < xpoints.length ; j++) {
+            ypoints[j] = ypoints[j]- 2*b;
+        }
+        //graphics.setColor(Color.BLUE);
+        graphics.drawPolygon(xpoints, ypoints, npoints);
+        for (int j = 0; j < xpoints.length ; j++) {
             ypoints[j] = ypointsOriginal[j];
-            }
+        }
 
 
-            //topright
-            for (int j = 0; j < xpoints.length ; j++) {
+        //topright
+        for (int j = 0; j < xpoints.length ; j++) {
             xpoints[j] = xpoints[j] + 3*a;
             ypoints[j] = ypoints[j] - b;
-            }
-            //graphics.setColor(Color.GREEN);
-            graphics.drawPolygon(xpoints, ypoints, npoints);
+        }
+        //graphics.setColor(Color.GREEN);
+        graphics.drawPolygon(xpoints, ypoints, npoints);
 
-            for (int j = 0; j < xpoints.length ; j++) {
+        for (int j = 0; j < xpoints.length ; j++) {
             xpoints[j] = xpointsOriginal[j];
             ypoints[j] = ypointsOriginal[j];
-            }
+        }
 
-            //bottomright
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpoints[j] + 3*a;
-                ypoints[j] = ypoints[j] + b;
-            }
-             graphics.drawPolygon(xpoints, ypoints, npoints);
-            for (int j = 0; j < xpoints.length ; j++) {
+        //bottomright
+        for (int j = 0; j < xpoints.length ; j++) {
+            xpoints[j] = xpoints[j] + 3*a;
+            ypoints[j] = ypoints[j] + b;
+        }
+        graphics.drawPolygon(xpoints, ypoints, npoints);
+        for (int j = 0; j < xpoints.length ; j++) {
             xpoints[j] = xpointsOriginal[j];
             ypoints[j] = ypointsOriginal[j];
-            }
+        }
 
-             //bottom
-            for (int j = 0; j < xpoints.length ; j++) {
+        //bottom
+        for (int j = 0; j < xpoints.length ; j++) {
             ypoints[j] = ypoints[j] + 2*b;
-            }
+        }
 
-             graphics.drawPolygon(xpoints, ypoints, npoints);
+        graphics.drawPolygon(xpoints, ypoints, npoints);
 
-            for (int j = 0; j < xpoints.length ; j++) {
+        for (int j = 0; j < xpoints.length ; j++) {
             ypoints[j] = ypointsOriginal[j];
-             }
+        }
 
-            //bottomleft
-            for (int j = 0; j < xpoints.length ; j++) {
+        //bottomleft
+        for (int j = 0; j < xpoints.length ; j++) {
             xpoints[j] = xpoints[j] - 3*a;
             ypoints[j] = ypoints[j] + b;
-            }
+        }
 
-            graphics.drawPolygon(xpoints, ypoints, npoints);
+        graphics.drawPolygon(xpoints, ypoints, npoints);
 
-            for (int j = 0; j < xpoints.length ; j++) {
+        for (int j = 0; j < xpoints.length ; j++) {
             xpoints[j] = xpointsOriginal[j];
             ypoints[j] = ypointsOriginal[j];
-            }
+        }
 
-            //topleft
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpoints[j] - 3 * a;
-                ypoints[j] = ypoints[j] - b;
-            }
+        //topleft
+        for (int j = 0; j < xpoints.length ; j++) {
+            xpoints[j] = xpoints[j] - 3 * a;
+            ypoints[j] = ypoints[j] - b;
+        }
 
-            graphics.drawPolygon(xpoints, ypoints, npoints);
+        graphics.drawPolygon(xpoints, ypoints, npoints);
 
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpointsOriginal[j];
-                ypoints[j] = ypointsOriginal[j];
-            }
+        for (int j = 0; j < xpoints.length ; j++) {
+            xpoints[j] = xpointsOriginal[j];
+            ypoints[j] = ypointsOriginal[j];
+        }
 
-
-
-
-
-
-
-            /*//topright
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpoints[j] + 3*a;
-                ypoints[j] = ypoints[j] - b;
-                graphics.drawPolygon(xpoints, ypoints, npoints);
-            }
-
-
-            //bottomright
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpoints[j] + 3*a;
-                ypoints[j] = ypoints[j] + b;
-            }
-
-            //bottom
-            for (int j = 0; j < xpoints.length ; j++) {
-                 ypoints[j] = ypoints[j] + 2*b;
-            }
-
-            //bottomleft
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpoints[j] - 3*a;
-                ypoints[j] = ypoints[j] + b;
-            }
-            //topleft
-            for (int j = 0; j < xpoints.length ; j++) {
-                xpoints[j] = xpoints[j] - 3*a;
-                ypoints[j] = ypoints[j] -b;
-            }*/
-
-
-
-
-
-        }/**/
-
-    public static void drawFlower (Graphics graphics, int[] xPos, int[] yPos, int[] xPosO, int[] yPosO, int npoints) {
-        
     }
 
 

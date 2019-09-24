@@ -7,11 +7,11 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class Triangles {
     public static void mainDraw(Graphics graphics) {
 
-        int triangleSide = 20;
-        int triangleHeight = (int) ((Math.sqrt(3))/2*triangleSide);
-        int bottomTrianglesQuantity = 20;
+        int triangleSide = 17;
+        int triangleHeight = 15;               //(int) ((Math.sqrt(3))/2*triangleSide);
+        int bottomTrianglesQuantity = 30;
         int bigTriangleSide = (bottomTrianglesQuantity * triangleSide);
-        int bigTriangleHeight = (int) ((Math.sqrt(3))/2*bigTriangleSide);
+        int bigTriangleHeight = triangleHeight * bottomTrianglesQuantity;
 
 
 
