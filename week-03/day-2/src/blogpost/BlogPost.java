@@ -1,6 +1,20 @@
 package blogpost;
 
 public class BlogPost {
+
+    String name;
+    String title;
+    String text;
+    String date;
+
+    BlogPost(String author, String title, String content, String date) {
+        name = author;
+        this.title = title;
+        text = content;
+        this.date = date;
+    }
+
+
 }
 
 
