@@ -9,18 +9,19 @@ public class Dominoes {
         // You have the list of Dominoes
         // Order them into one snake where the adjacent dominoes have the same numbers on their adjacent sides
         // eg: [2, 4], [4, 3], [3, 5] ...
-        List<Domino> copyDominoes = initializeDominoes();
-        for (int i = 0; i <dominoes.size()-1 ; i++) {
-            for (int j = 0; j < dominoes.size()-1 ; j++) {
+        System.out.println(dominoes);
 
-            if (dominoes.get(i).getLeftSide() == dominoes.get(j).getRightSide() && i !=j){
-                System.out.print(dominoes.get(j).toString() + dominoes.get(i).toString());
-            }
+        for (int j = 0; j < dominoes.size() ; j++) {
+
+            for (int i = 0; i < dominoes.size() - 2; i++) {
+                if (dominoes.get(dominoes.size() - 1).getRightSide() == dominoes.get(i).getLeftSide()) {
+                    dominoes.add(dominoes.get(i));
+                    dominoes.remove(i);
+                }
             }
         }
 
-
-        //System.out.println(dominoes);
+        System.out.println(dominoes);
     }
 
     static List<Domino> initializeDominoes() {
