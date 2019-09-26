@@ -9,6 +9,7 @@ public class Sharpie {
     Sharpie (String color, float width) {
         this.color = color;
         this.width = width;
+
     }
 
     public void use (){
