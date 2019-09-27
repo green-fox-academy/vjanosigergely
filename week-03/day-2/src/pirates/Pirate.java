@@ -2,39 +2,62 @@ package pirates;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.Random;
+
 public class Pirate {
     Pirate(){
             }
 
     int toxicityLevel = 0;
-    boolean isAlive = true;
+    boolean isDead = false;
+    boolean passedOut = false;
+    Random random = new Random();
 
 
     public void drinkSomeRum(){
-        if (isAlive) {
-            toxicityLevel += 1;
-        } else {
+        if (isDead == true) {
             System.out.println("He's dead");
+        } else {
+            toxicityLevel += 1;
         }
     }
 
     public void howsItGoingMate(){
-        if (isAlive = false) {
+        if (isDead == true) {
             System.out.println("He's dead");
         } else if (toxicityLevel <= 4) {
             System.out.println("Pour me anudder!");
         } else {
             System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
-            toxicityLevel = 0;
+            passOut();
         }
     }
 
     public void die(){
-        isAlive = false;
+        isDead = true;
+    }
+
+    public void passOut(){
+        toxicityLevel = 0;
+        passedOut = true;
+        System.out.println("Pirate is passed out");
     }
 
     public void brawl(Pirate anotherPirate){
-        
+        int chance = random.nextInt(3);
+        switch (chance) {
+            case 0:
+                anotherPirate.passOut();
+                this.passOut();
+                break;
+            case 2:
+                anotherPirate.die();
+                break;
+            case 3:
+                this.die();
+                break;
+        }
+
     }
 
 }
