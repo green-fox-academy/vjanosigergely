@@ -19,7 +19,7 @@ public class Strings {
 
     }
     public static String xRecReplacer (String original) {
-    
+
     }
 }
 

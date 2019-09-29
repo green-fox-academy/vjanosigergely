@@ -14,7 +14,8 @@ public class Ship {
     }
 
     public void fillShip(){
-        for (int i = 0; i < random.nextInt(100) ; i++) {
+        int crewSize = random.nextInt(100);
+        for (int i = 0; i < crewSize; i++) {
                 crew.add(new Pirate());
         }
         captain = new Pirate();
@@ -40,12 +41,12 @@ public class Ship {
     public int calculateScore(Ship ship){
 
         int alive = 0;
-        for (int i = 0; i < crew.size()-1 ; i++) {
-            if (crew.get(i).isDead == false) {
+        for (int i = 0; i < crew.size(); i++) {
+            if (ship.crew.get(i).isDead == false) {
                 alive +=1;
             }
         }
-        int score = alive - captain.toxicityLevel;
+        int score = alive - ship.captain.toxicityLevel;
 
         return score;
 
@@ -58,17 +59,19 @@ public class Ship {
 
     }
     public void randomDrinks (Ship winnerShip){
-        int rums = random.nextInt();
+        int rums = random.nextInt(50);
         for (int i = 0; i < rums ; i++) {
             for (int j = 0; j < winnerShip.crew.size()-1 ; j++) {
                 winnerShip.crew.get(j).drinkSomeRum();
             }
+            winnerShip.captain.drinkSomeRum();
         }
+
     }
     public void statusReport(){
         System.out.println("The captain drank " + String.valueOf(captain.toxicityLevel) + " rums");
-        System.out.println(captain.isDead ? "The captain is dead now" : "" );
-        System.out.println(captain.passedOut ? "The captain is passed out" : "The capatin is fine");
+        System.out.println(captain.isDead ? "The captain is dead now" : "The captain is alive" );
+        System.out.println(captain.passedOut ? "The captain is passed out" : "The captain is fine");
         System.out.println("There are " + (this.calculateScore(this) + this.captain.toxicityLevel) + " pirates alive on the ship");
 
     }

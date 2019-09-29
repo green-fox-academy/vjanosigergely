@@ -44,18 +44,20 @@ public class Pirate {
     }
 
     public void brawl(Pirate anotherPirate){
-        int chance = random.nextInt(3);
-        switch (chance) {
-            case 0:
-                anotherPirate.passOut();
-                this.passOut();
-                break;
-            case 2:
-                anotherPirate.die();
-                break;
-            case 3:
-                this.die();
-                break;
+        if (anotherPirate.isDead == false) {
+            int chance = random.nextInt(3);
+            switch (chance) {
+                case 0:
+                    anotherPirate.passOut();
+                    this.passOut();
+                    break;
+                case 1:
+                    anotherPirate.die();
+                    break;
+                case 2:
+                    this.die();
+                    break;
+            }
         }
 
     }
