@@ -1,6 +1,6 @@
 package people;
 
-public class Student extends Person {
+public class Student extends Person implements Cloneable {
 
     String previousOrganization = "The School of Life";
     int skippedDays = 0;
@@ -30,13 +30,17 @@ public class Student extends Person {
                 " who skipped " + skippedDays + "from the course already" );
     }
 
-    public Student clone(Student original){
-        Student clone = original;
+    /*public Student clone(Student original){
+        *//*Student clone = new Student();
+        clone = original;*//*
 
         return clone;
+    }*/
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
-
-
 }
 
 
