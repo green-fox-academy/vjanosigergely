@@ -6,6 +6,8 @@ public class Main {
         F35 secondFighter = new F35();
         Carrier mutterShip = new Carrier(1000,1000);
 
+        System.out.println(firstFighter.isPriority());
+
         mutterShip.carriedAircrafts.add(firstFighter);
         mutterShip.carriedAircrafts.add(secondFighter);
 

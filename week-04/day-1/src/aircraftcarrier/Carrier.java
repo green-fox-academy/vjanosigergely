@@ -23,32 +23,33 @@ public class Carrier {
     //If there is no ammo when this method is called, it should throw an exception
     public void fill(){
         if (ammoStore > 0) {
-            int usedAmmo = 0;
-            while (usedAmmo <= ammoStore) {
                 for (Aircraft aircaft : carriedAircrafts) {
                     if (aircaft.isPriority) {
                         int neededAmmo = aircaft.maxAmmo - aircaft.currentAmmo;
-                        aircaft.currentAmmo += neededAmmo;
-                        usedAmmo += neededAmmo;
-                        ammoStore -= neededAmmo;
+                        int toFill = Math.min(neededAmmo, ammoStore);
+                        aircaft.currentAmmo += toFill;
+                        ammoStore -= toFill;
                     }
 
                 }
                 for (Aircraft aircaft : carriedAircrafts) {
-                    if (aircaft.isPriority = false) {
+                    if (aircaft.isPriority == false) {
                         int neededAmmo = aircaft.maxAmmo - aircaft.currentAmmo;
-                        aircaft.currentAmmo += neededAmmo;
-                        usedAmmo += neededAmmo;
-                        ammoStore -= neededAmmo;
-
+                        int toFill = Math.min(neededAmmo, ammoStore);
+                        aircaft.currentAmmo += toFill;
+                        ammoStore -= toFill;
                     }
-
                 }
 
-            }
         } else {
             System.out.println("There is no ammo in the store");
         }
+    }
+    //fight
+    //It should take another carrier as a reference parameter
+    // and fire all the ammo from the aircrafts to it, then subtract all the damage from its health points
+    public void fight (Carrier othercarrier){
+
     }
 
 

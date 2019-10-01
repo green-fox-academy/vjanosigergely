@@ -6,7 +6,8 @@ public class Test {
 
     public static void main(String[] args) {
 
-        ArrayList<Person> people = new ArrayList<>();
+
+                ArrayList<Person> people = new ArrayList<>();
 
         Person mark = new Person("Mark", 46, "male");
         people.add(mark);
@@ -46,5 +47,7 @@ public class Test {
         awesome.addMentor(mentor);
         awesome.addMentor(gandhi);
         awesome.info();
+
+        Student johnTheClone = john.clone(john);
     }
 }

@@ -30,6 +30,13 @@ public class Student extends Person {
                 " who skipped " + skippedDays + "from the course already" );
     }
 
+    public Student clone(Student original){
+        Student clone = original;
+
+        return clone;
+    }
+
+
 }
 
 
