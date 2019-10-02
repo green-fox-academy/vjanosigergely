@@ -19,16 +19,18 @@ public class CountLetters {
             arranged.add(word.charAt(i));
         }
         Collections.sort(arranged);
+        arranged.add('0');
         int counterOne = 0;
+        int sumLetters = 0;
 
-        for (int i = 0; i < arranged.size() ; i += counterOne) {
+        for (int i = 0; sumLetters < arranged.size()-1; i += counterOne) {
             int counterTwo = 1;
-            for (int j = i; j < arranged.size()-1; j++) {
-                if (arranged.get(j) == arranged.get(j+1)){
+            if (arranged.get(i) == arranged.get(i+1)){
                     counterTwo += 1;
                 }
-            }
+
             counterOne = counterTwo;
+            sumLetters += counterTwo;
             occurance.put(arranged.get(i), counterTwo);
         }
 

@@ -10,7 +10,7 @@ public class CountLettersTest {
 
     @Test
     public void occuranceFinder() {
-        String searchable = "amdam";
+        String searchable = "madam";
         HashMap<Character, Integer> checkword = new HashMap<>();
         checkword.put('a', 2);
         checkword.put('d', 1);
