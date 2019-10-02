@@ -23,7 +23,7 @@ public class CountLetters {
 
         for (int i = 0; i < arranged.size() ; i += counterOne) {
             int counterTwo = 1;
-            for (int j = i; j < arranged.size(); j++) {
+            for (int j = i; j < arranged.size()-1; j++) {
                 if (arranged.get(j) == arranged.get(j+1)){
                     counterTwo += 1;
                 }
