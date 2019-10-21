@@ -1,11 +1,20 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Fox {
   String name;
   String color;
   int age;
+
+  public String getColor() {
+    return color;
+  }
+
+
 
   Fox(String name, String color, int age){
     this.name = name;
@@ -33,7 +42,8 @@ public class Fox {
         .filter(f -> f.age < 5)
         .collect(Collectors.toList());
     //Write a Stream Expression to find the frequency of foxes by color!
-
+    Map<String, Long> frequency = myFoxes.stream()
+        .collect(Collectors.groupingBy(Fox::getColor,Collectors.counting()));
   }
 
 }
