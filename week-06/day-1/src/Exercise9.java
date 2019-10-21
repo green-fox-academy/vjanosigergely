@@ -9,7 +9,7 @@ public class Exercise9 {
 
     HashMap<Character, Integer> frequency = (HashMap<Character, Integer>) text.toLowerCase().replaceAll(" ", "").chars()
         .mapToObj(c -> (char) c)
-        .collect(Collectors.groupingBy(Function.identity(),Collectors.summingInt(c ->1)));
+        .collect(Collectors.groupingBy(Function.identity(),Collectors.summingInt(c -> 1)));
   }
 
 }
