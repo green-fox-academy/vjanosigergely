@@ -14,9 +14,9 @@ public class HelloMultiLanguageController {
       "Sa-wat-dee", "Merhaba", "Selam", "Vitayu", "Xin chào", "Hylo", "Sut Mae", "Sholem Aleychem", "Sawubona"};
 
   @RequestMapping(value ="/web/greeting2")
-  public String greeting(Model model, @RequestParam String color) {
+  public String greeting(Model model, @RequestParam String color, @RequestParam String size) {
     model.addAttribute("color","color: " + color);
-    //model.addAttribute(fontSize);
+    model.addAttribute("size","font-size: " + size);
 
     return "greeting2";
   }
