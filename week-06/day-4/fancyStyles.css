@@ -2,26 +2,46 @@ body {
 background-color: #0366d6;
 }
 
-table{
-    width: 500px;
-    margin: 25px;
-    background-color: white;
-    border-radius: 2px;
-}
-
-
-th,td,table{
+th,td{
     border: grey 1px solid;
     border-collapse: collapse;
     font-size: 16px;
     padding: 15px;
     color: grey;
+    
 }
+
+table{
+    width: 500px;
+    margin: 25px;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px grey;
+}
+
 th{
     text-align: left;
     background-color: black;
     font-size: 22px;
     color: white;
+        
+}
+th:first-child{
+    border-top-left-radius: 10px;
+    }
+
+th:last-child{
+    border-top-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
 }
 tr:nth-child(2n+2){
     background-color: lightgray;
