@@ -1,0 +1,37 @@
+body {
+    background-color: #dddddd;
+}
+form{
+    background-color: #fff;
+    padding: 30px 50px;
+    margin: 0 auto;
+    width: 900px;
+}
+
+input{
+    border: none;
+    border-bottom: #dddddd 1px solid;
+    width: 250px;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+}
+
+input[type =text]{
+    display: block;
+}
+
+h2{
+    display: inline;
+    background-color: #dddddd;
+    border-radius: 100%;
+}
+
+a{
+    text-align: right;
+    margin-left: 100px;
+    padding-left: 10px;
+    background-color: blue;
+    color: #fff;
+}
