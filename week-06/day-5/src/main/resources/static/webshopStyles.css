@@ -1,0 +1,50 @@
+body{
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+h1{
+    color: #1fbcd2;
+    border:none;
+    border-bottom: #1fbcd2 1px solid;
+    width: auto;
+}
+
+button{
+    background-color: #f1453d;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 4px;
+    width: 18%;
+    margin-left: 15px;
+}
+
+button.menu:first-child{
+    margin-left: 0;
+}
+
+button.searchfield{
+    font-size: 25px;
+    width: 10%;
+}
+
+p.searchfield{
+    color: #f1453d;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+input{
+    border:2px #f1453d solid;
+    border-radius: 5px;
+    font-size: 25px;
+    width:80%;
+}
+
+th {
+    height: 70px;
+    color: #1fbcd2;
+
+}
