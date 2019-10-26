@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel=stylesheet href="/webshopStyles.css" type="text/css">
+</head>
+<body>
+<h1>My Shop</h1> <!--Title-->
+<div class = "menu"><!--Menu-->
+  <form>
+    <button class = "menu" formaction="http://localhost:8080/only-available">ONLY AVAILABLE</button>
+    <button class = "menu" formaction="/cheapest-first">CHEAPEST FIRST</button>
+    <button class = "menu" formaction="/contains-nike">CONTAINS NIKE</button>
+    <button class = "menu" formaction="/average-stock">AVERAGE STOCK</button>
+    <button class = "menu" formaction="/most-expensive">MOST EXPENSIVE AVAILABLE</button>
+  </form>
+</div>
+
+<div id = "SearchField"></div><!--SearchField-->
+<p class = "searchfield">Search for</p>
+<form action="">
+  <input type="search" name="email" id="email" placeholder="...something like Nike" required>
+  <button class = "searchfield">Search</button>
+</form>
+</div>
+<h2 th:text=" ${name}"></h2>
+</body>
+</html>

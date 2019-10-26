@@ -28,23 +28,40 @@ button.menu:first-child{
 button.searchfield{
     font-size: 25px;
     width: 10%;
+    height: 60px;
 }
 
 p.searchfield{
     color: #f1453d;
     font-size: 15px;
     margin-bottom: 0;
+    
 }
 
 input{
     border:2px #f1453d solid;
     border-radius: 5px;
     font-size: 25px;
-    width:80%;
+    width:87%;
+    height: 60px;
+}
+
+table{
+    margin-top: 20px;
+    width: 100%;
 }
 
 th {
+    
     height: 70px;
-    color: #1fbcd2;
+    background-color: #69effe;
+}
 
+th.desciption{
+    
+}
+
+td {
+    font-weight: bold;
+    font-size: 16px;
 }
