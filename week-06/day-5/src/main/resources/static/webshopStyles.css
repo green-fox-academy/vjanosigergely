@@ -11,6 +11,11 @@ h1{
     width: auto;
 }
 
+a:link, a:visited, a:active, a:hover{
+    color: #1fbcd2;
+    text-decoration: none;
+}
+
 button{
     background-color: #f1453d;
     border: none;

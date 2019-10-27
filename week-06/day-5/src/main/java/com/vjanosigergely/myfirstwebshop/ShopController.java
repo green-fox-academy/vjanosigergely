@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShopController {
@@ -66,13 +68,14 @@ public class ShopController {
         .average()
         .orElse(-1);
     model.addAttribute("name", average + averageStock);
-    return "webshopAverage";
+    return "webshopTextDisplay";
   }
 
   @GetMapping(value = "/most-expensive")
   public String mostExpensive(Model model){
-    String expensive = " is the most expensive product";
+    String expensive = " is the most expensive product available";
     ShopItem mostExpensive = myItemList.stream()
+        .filter(item -> item.quantityOfStock > 0)
         .max(Comparator.comparingDouble(ShopItem::getPrice))
         .orElse(myItemList.get(0));
        /* .map(i -> i.price)
@@ -80,7 +83,16 @@ public class ShopController {
         .max()
         .orElse(-1);*/
     model.addAttribute("name", mostExpensive.name + expensive);
-    return "webshopAverage";
+    return "webshopTextDisplay";
+  }
+
+  @PostMapping(value = "/search")
+  public String search(Model model, @RequestParam String searched){
+    List searchedItems = myItemList.stream()
+        .filter(product -> product.getDescription().toLowerCase().contains(searched.toLowerCase()) || product.getName().toLowerCase() .contains(searched.toLowerCase()))
+        .collect(Collectors.toList());
+    model.addAttribute("items", searchedItems);
+    return "webshop";
   }
 
 

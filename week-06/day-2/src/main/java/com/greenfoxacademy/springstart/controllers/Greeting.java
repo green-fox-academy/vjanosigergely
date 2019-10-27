@@ -1,6 +1,5 @@
 package com.greenfoxacademy.springstart.controllers;
 
-import java.util.concurrent.atomic.AtomicLong;
 
 public class Greeting {
   long id;

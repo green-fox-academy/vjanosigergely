@@ -4,7 +4,7 @@
   <link rel=stylesheet href="/webshopStyles.css" type="text/css">
 </head>
 <body>
-<h1>My Shop</h1> <!--Title-->
+<h1><a href="http://localhost:8080/itemList">My Shop</a></h1> <!--Title-->
 <div class = "menu"><!--Menu-->
   <form>
     <button class = "menu" formaction="http://localhost:8080/only-available">ONLY AVAILABLE</button>
@@ -17,8 +17,8 @@
 
 <div id = "SearchField"></div><!--SearchField-->
 <p class = "searchfield">Search for</p>
-<form action="">
-  <input type="search" name="email" id="email" placeholder="...something like Nike" required>
+<form action="/search" method="POST">
+  <input type="text" name="searched" id="search" placeholder="...something like Nike" required>
   <button class = "searchfield">Search</button>
 </form>
 </div>

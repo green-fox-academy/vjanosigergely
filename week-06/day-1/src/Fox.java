@@ -35,7 +35,7 @@ public class Fox {
 
     //Write a Stream Expression to find the foxes with green color!
     List<Fox> greenFoxes = myFoxes.stream()
-        .filter(f -> f.color == "green")
+        .filter(f -> f.color.equals("green"))
         .collect(Collectors.toList());
     //Write a Stream Expression to find the foxes with green color, and age less then 5 years!
     List<Fox> greenAndYoung = greenFoxes.stream()
