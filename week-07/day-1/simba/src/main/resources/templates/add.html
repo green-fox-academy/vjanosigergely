@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My shelter</title>
+</head>
+<body>
+<h1>Add new dog</h1>
+
+<form th:action="@{/accounts/add}" method="post" th:object="${accountToAdd}">
+
+  <label for="name">Name</label>
+  <input
+      type="text"
+      name="name"
+      id="name"
+      th:field="*{name}"
+      required
+  />
+  <br>
+
+  <label for="balance">Balance</label>
+  <input
+      type="text"
+      name="balance"
+      id="balance"
+      th:field="*{balance}"
+      required
+  />
+  <br>
+
+  <label for="animalType">Type of Animal</label>
+  <input
+      type="text"
+      name="animalType"
+      id="animalType"
+      th:field="*{animalType}"
+      required
+  />
+  <br>
+
+  <label for="balance">Is he/she a king?</label>
+  <input
+      type="text"
+      name="kingOwner"
+      id="kingOwner"
+      th:field="*{kingOwner}"
+
+  />
+
+  <br>
+
+  <label for="badGuy">Is he/she a bad guy?</label>
+  <input
+      type="text"
+      name="badGuy"
+      id="badGuy"
+      th:field="*{badGuy}"
+  />
+
+  <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

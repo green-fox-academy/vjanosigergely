@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BankController {
@@ -16,29 +18,41 @@ public class BankController {
     animalAccounts = new ArrayList<>();
     animalAccounts.add(new BankAccount("Nala", 5000, "lion"));
     animalAccounts.add(new BankAccount("Zazu", 19000, "hornbill"));
-    animalAccounts.add(new BankAccount("Rafiki", 8000, "monkey" ));
-    animalAccounts.add(new BankAccount("Mufasa", 999999, "lion",true ));
-    animalAccounts.add(new BankAccount("Scar", 20000,"lion",false,true));
+    animalAccounts.add(new BankAccount("Rafiki", 8000, "monkey"));
+    animalAccounts.add(new BankAccount("Mufasa", 999999, "lion", true));
+    animalAccounts.add(new BankAccount("Scar", 20000, "lion", false, true));
   }
 
   @GetMapping(value = "/show")
-  public String showAccount(Model model){
-  model.addAttribute("account", new BankAccount("Simba", 2000,"lion"));
-  return "index";
+  public String showAccount(Model model) {
+    model.addAttribute("account", new BankAccount("Simba", 2000, "lion"));
+    return "index";
   }
 
   @GetMapping(value = "htmlception")
-  public String htmlception(Model model){
+  public String htmlception(Model model) {
     model.addAttribute("text", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
     return "htmlception";
   }
 
   @GetMapping(value = "/accounts")
-  public String accounts(Model model){
-    model.addAttribute("accounts",animalAccounts);
-  return "accounts";
+  public String accounts(Model model) {
+    model.addAttribute("accounts", animalAccounts);
+    return "accounts";
   }
 
+  @GetMapping(value = "/accounts/add")
+  public String addNewAccount(@ModelAttribute(name = "new") BankAccount accountToAdd, Model model) {
+    model.addAttribute("accountToAdd", accountToAdd);
+    return "add";
+  }
+
+  @PostMapping(value = "/accounts/add")
+  public String saveNewAccount(@ModelAttribute(name = "new") BankAccount accountToAdd) {
+    animalAccounts.add(accountToAdd);
+    return "redirect:/accounts";
+
+  }
 }
 
 
