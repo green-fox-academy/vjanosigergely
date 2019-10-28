@@ -18,6 +18,7 @@ public class BankController {
     animalAccounts.add(new BankAccount("Zazu", 19000, "hornbill"));
     animalAccounts.add(new BankAccount("Rafiki", 8000, "monkey" ));
     animalAccounts.add(new BankAccount("Mufasa", 999999, "lion",true ));
+    animalAccounts.add(new BankAccount("Scar", 20000,"lion",false,true));
   }
 
   @GetMapping(value = "/show")

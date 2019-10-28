@@ -16,12 +16,22 @@
   </tr>
   <tr th:each="account : ${accounts}" th:style="${account.isKingOwner() ? 'background-color: yellow' : 'color:black'}">
 
-    <td th:text="${account.getName()}"></td>
-    <td th:text="${account.getBalance()}"> </td>
-    <td th:text="${account.getAnimalType()}"></td>
-    <td th:text="${accountStat.index}" ></td>
-    <td th:if="${account.isKingOwner()}">King</td>
+      <td th:text="${account.getName()}"></td>
+      <td th:text="${account.getBalance()}"> </td>
+      <td th:text="${account.getAnimalType()}"></td>
+      <td th:text="${accountStat.index}" ></td>
+      <td th:if="${account.isKingOwner()}">King</td>
+        <td th:if="${account.isKingOwner() == false}"></td>
 
+    <div th:switch="${account.isBadGuy()}">
+        <td th:case="true">Bad guy</td>
+        <td th:case="false">Good guy</td>
+    </div>
+
+      <td>
+        <form action="/accounts/accountStat.index" method="POST">
+        <button>Raise Money</button>
+        </form></td>
 
   </tr>
 </table>
