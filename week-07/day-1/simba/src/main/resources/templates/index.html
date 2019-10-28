@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+  <ul th:each="account : ${account}">
+    <li th:text="|Name : ${account.getName()}|"></li>
+    <li th:text="|Balance : ${account.getBalance()} zebra. |"></li>
+    <li th:text="|AnimalType : ${account.getAnimalType()}|"></li>
+  </ul>
+</body>
+</html>
+
+
+<!--Create a template where you show the fields of the BankAccount-->
