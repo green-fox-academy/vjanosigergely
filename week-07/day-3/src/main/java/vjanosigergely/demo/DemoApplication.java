@@ -22,6 +22,7 @@ public class DemoApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-  printer.log(myColor.printColor());
+  printer.log("blablabla");
+  myColor.printColor();
   }
 }

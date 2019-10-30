@@ -5,7 +5,7 @@ package vjanosigergely.demo;
 // There is one interface given:
 
 public interface MyColor {
-  public String printColor();
+  public void printColor();
 }
 
 // Any kind of color class (for i.e. RedColor) can implement this interface overriding `printColor();` sout-ing for i.e. `"It is red in color..."`.

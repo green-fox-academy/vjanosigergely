@@ -1,9 +1,13 @@
 package vjanosigergely.demo;
 
 public class BlueColor implements MyColor {
+  Printer printer;
+  BlueColor (Printer printer){
+    this.printer = printer;
+  }
 
   @Override
-  public String printColor() {
-    return "It is blue in color...";
+  public void printColor() {
+    printer.log("It is blue in color");
   }
 }
