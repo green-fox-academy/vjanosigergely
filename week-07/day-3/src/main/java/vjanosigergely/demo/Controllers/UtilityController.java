@@ -49,4 +49,17 @@ public class UtilityController {
     return "validation";
   }
 
+  // - Endpoints for encoding and decoding with a `text` and `number` query param
+  @GetMapping (value = "/caesar/encoding")
+  public String encoder (Model model, @RequestParam(name = "text") String text, @RequestParam (name = "number") int number){
+    model.addAttribute("coded", utilityService.caesar(text,number));
+    return "caesar";
+  }
+
+  @GetMapping (value = "/caesar/decoding")
+  public String decoder (Model model, @RequestParam(name = "text") String text, @RequestParam (name = "number") int number){
+    model.addAttribute("coded", utilityService.caesar(text,number * (-1)));
+    return "caesar";
+  }
+
 }
