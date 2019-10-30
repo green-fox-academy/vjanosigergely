@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BankController {
@@ -51,7 +52,17 @@ public class BankController {
   public String saveNewAccount(@ModelAttribute(name = "new") BankAccount accountToAdd) {
     animalAccounts.add(accountToAdd);
     return "redirect:/accounts";
+  }
 
+  @PostMapping(value = "/accounts/increase")
+  public String increaseAccount(@RequestParam int index){
+    BankAccount selected = animalAccounts.get(index);
+    if (selected.isKingOwner()) {
+      selected.setBalance(selected.getBalance() + 100);
+    } else{
+    selected.setBalance(selected.getBalance()+ 10);
+    }
+    return "redirect:/accounts";
   }
 }
 
