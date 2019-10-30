@@ -8,10 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
   private Printer printer;
+  private MyColor myColor;
 
   @Autowired
-  DemoApplication(Printer printer){
+  DemoApplication(Printer printer, MyColor myColor){
     this.printer = printer;
+    this.myColor = myColor;
   }
 
   public static void main(String[] args) {
@@ -20,6 +22,6 @@ public class DemoApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-  printer.log("hello");
+  printer.log(myColor.printColor());
   }
 }
