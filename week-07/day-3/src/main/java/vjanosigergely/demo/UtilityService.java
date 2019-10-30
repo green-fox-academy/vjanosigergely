@@ -22,4 +22,12 @@ public class UtilityService {
   public String randomColor() {
     return colors.get(random.nextInt(colors.size()));
   }
+  //Create a `validateEmail` method in the `UtilityService`
+  ////     - check if the string contains a `@` and a `.`
+
+  public boolean validateEmail(String email){
+    boolean isValid;
+    isValid = email.contains("@") && email.contains(".");
+    return isValid;
+  }
 }

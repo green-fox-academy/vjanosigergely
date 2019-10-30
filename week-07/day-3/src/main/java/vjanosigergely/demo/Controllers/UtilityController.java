@@ -3,6 +3,7 @@ package vjanosigergely.demo.Controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import vjanosigergely.demo.UtilityService;
 
 @Controller
@@ -24,6 +25,28 @@ public class UtilityController {
   public String randomColor(Model model){
     model.addAttribute("color",utilityService.randomColor());
     return "randomcolor";
+  }
+  //  ## Email validator
+// - Endpoint at `/useful/email` with a queryparam
+// - Have a link at the main page to an example: `/useful/email?email=is@this.valid`
+// - Create a `validateEmail` method in the `UtilityService`
+//     - check if the string contains a `@` and a `.`
+// - Display the following to the user
+//     - `is@this.valid is a valid email address` in green
+//     - `not_valid_email.com is not a valid email address` in red
+
+  @GetMapping(value = "/useful/email")
+  public String emailValidator(Model model, @RequestParam(name = "email", required = false ) String email){
+    if (email == null || email.length() == 0){
+      model.addAttribute("validity", "Please provide an email address");
+    } else if (utilityService.validateEmail(email)){
+      model.addAttribute("validity", email + " is a valid email address");
+      model.addAttribute("color", "color: green");
+    } else {
+      model.addAttribute("validity", email + " is not a valid email address");
+      model.addAttribute("color", "color: red");
+    }
+    return "validation";
   }
 
 }
