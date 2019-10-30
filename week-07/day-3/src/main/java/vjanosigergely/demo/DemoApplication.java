@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import vjanosigergely.demo.services.MyColor;
+import vjanosigergely.demo.services.Printer;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {

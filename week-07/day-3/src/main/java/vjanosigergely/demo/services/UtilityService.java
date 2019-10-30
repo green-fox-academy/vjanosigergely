@@ -1,4 +1,4 @@
-package vjanosigergely.demo;
+package vjanosigergely.demo.services;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package vjanosigergely.demo;
+package vjanosigergely.demo.services;
 
 import org.springframework.stereotype.Service;
 

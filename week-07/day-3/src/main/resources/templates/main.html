@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<span>Current number of students</span>
+<span th:text="${count}"></span> <br>
+<h1>Beautiful links</h1> <br>
+<a th:href="@{/gfa/list}">See current students</a> <br>
+<a th:href="@{/gfa/add}">Add a new student</a> <br>
+<a th:href="@{/gfa/check}">Check if a student is in the list already</a>
+</body>
+</html>

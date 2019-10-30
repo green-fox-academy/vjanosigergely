@@ -1,4 +1,4 @@
-package vjanosigergely.demo;
+package vjanosigergely.demo.services;
 
 public class BlueColor implements MyColor {
   Printer printer;

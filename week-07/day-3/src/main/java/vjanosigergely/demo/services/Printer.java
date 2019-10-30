@@ -1,4 +1,4 @@
-package vjanosigergely.demo;
+package vjanosigergely.demo.services;
 
 import java.time.LocalDateTime;
 import org.springframework.boot.CommandLineRunner;

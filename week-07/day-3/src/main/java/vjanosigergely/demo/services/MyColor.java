@@ -1,4 +1,4 @@
-package vjanosigergely.demo;
+package vjanosigergely.demo.services;
 
 // # Playing around with colors
 

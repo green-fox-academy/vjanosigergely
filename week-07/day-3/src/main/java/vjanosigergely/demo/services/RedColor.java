@@ -1,6 +1,4 @@
-package vjanosigergely.demo;
-
-import org.springframework.stereotype.Service;
+package vjanosigergely.demo.services;
 
 
 public class RedColor implements MyColor {
