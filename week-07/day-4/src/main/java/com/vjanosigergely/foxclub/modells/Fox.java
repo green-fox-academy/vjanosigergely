@@ -1,10 +1,11 @@
 package com.vjanosigergely.foxclub.modells;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Fox {
   String name;
-  List<String> listOfTricks;
+  List<String> listOfTricks = new ArrayList<>();
   String food;
   String drink;
 
@@ -14,6 +15,13 @@ public class Fox {
 
   public Fox(String name){
     this.name = name;
+  }
+
+  public Fox(String name, String food, String drink) {
+    this(name);
+    this.listOfTricks = listOfTricks;
+    this.food = food;
+    this.drink = drink;
   }
 
   public Fox(String name, List<String> listOfTricks, String food, String drink) {
@@ -53,6 +61,10 @@ public class Fox {
 
   public void setDrink(String drink) {
     this.drink = drink;
+  }
+
+  public void learnTrick(String trick){
+    listOfTricks.add(trick);
   }
 }
 

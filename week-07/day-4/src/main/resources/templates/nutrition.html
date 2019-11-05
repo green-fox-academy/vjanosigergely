@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Nutrition Change</title>
 </head>
 <body>
-$END$
+
+<p>blbalblbblblblalblbl</p>
+<form
+    th:action="@{'/nutritionstore?name=' + ${foxname}}"
+
+      th:method="POST"
+>
+  <fieldset>
+    <legend></legend>
+    <p>
+      <label>Food</label>
+      <select id = "myList" name = "selectedFood" >
+        <option value = "pizza">Pizza</option>
+        <option value = "hamburger">Hamburger</option>
+        <option value = "gyros">Gyros</option>
+        <option value = "salad">Salad</option>
+      </select>
+      <label>Drink</label>
+      <select id = "myList2" name = "selectedDrink" >
+        <option value = "coke">coke</option>
+        <option value = "tea">tea</option>
+        <option value = "coffee">coffee</option>
+        <option value = "water">water</option>
+      </select>
+    </p>
+
+    <button type="submit">Change</button>
+  </fieldset>
+</form>
+
+
 </body>
 </html>

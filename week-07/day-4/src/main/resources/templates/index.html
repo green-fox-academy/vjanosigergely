@@ -8,13 +8,12 @@
 <a th:href="@{/main}">Information</a><br>
 <img th:src="@{greenfox.png}" alt="Green fox">
 
-<p th:text="|This is ${name} . Currently living on ${food} and ${drink}. He knows ${listOfTricks} |"> </p>
+<p th:text="|This is ${fox.name} . Currently living on ${fox.food} and ${fox.drink}. He knows ${tricks} tricks |"> </p>
 
 <h1>Known tricks</h1>
 <ul>
-  <li>write HTML</li>
-  <li>Code in Java</li>
- </ul>
+  <li th:each="trick : ${tricklist}" th:text="${trick}" th:value="${trick}"></li>
+</ul>
 
 </body>
 </html>

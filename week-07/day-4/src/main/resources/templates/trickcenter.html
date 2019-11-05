@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+<form th:action="@{'/tricklist?name=' + ${foxname}}"
+
+th:method="POST">
+  <p>
+    <label>Trick</label>
+    <select id = "myList" name = "trick" >
+      <option th:each="trick : ${tricks}" th:text="${trick}" th:value="${trick}"></option>
+
+    </select>
+
+    <button type="submit">Learn</button>
+  </p>
+</form>
+
 </body>
 </html>

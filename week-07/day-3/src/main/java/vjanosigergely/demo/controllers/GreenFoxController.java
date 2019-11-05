@@ -42,7 +42,6 @@ public class GreenFoxController {
 
   @PostMapping(value = "/gfa/add")
   public String saveStudents(@RequestParam String name){
-    System.out.println(name);
     studentService.save(name);
   return "redirect:/gfa/list";
   }
@@ -57,17 +56,17 @@ public class GreenFoxController {
 
   @PostMapping(value = "gfa/check")
   public String showCheckedStudent(Model model, @RequestParam String tocheck){
-    //System.out.println("To check:" + tocheck);
+    String answer = "";
     for (String student: studentService.findAll()){
       if (student.toLowerCase().equals(tocheck.toLowerCase())){
-        //System.out.println("Equals" + student);
-        model.addAttribute("status", tocheck + " is already in the list");
+        answer = " is already in the list";
         break;
       } else {
-        //System.out.println("NOt Equals" + student);
-        model.addAttribute("status", tocheck + " is not in the list yet");
+        answer = " is not in the list yet";
       }
     }
+    model.addAttribute("status", tocheck + answer);
+
     return "checked";
   }
 }
