@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en "xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<h1>Add new dog</h1>
+
+<form th:action="@{/todo/add}" method="post" th:object="${newtodo}">
+
+  <label for="title">Todo</label>
+  <input
+      type="text"
+      name="title"
+      id="title"
+      th:field="*{title}"
+      required
+  />
+  <br>
+
+  <label for="urgent"></label>
+  <input
+      type="radio"
+      value="true"
+      name="urgent"
+      id="urgent"
+      th:field="*{urgent}"
+      required
+  /> Urgent
+  <input
+      type="radio"
+      value="false"
+      name="urgent"
+      id="urgent2"
+      th:field="*{urgent}"
+      required
+  /> Not Urgent <br>
+  <button type="submit">Save</button>
+</form>
+
+
+</body>
+</html>
