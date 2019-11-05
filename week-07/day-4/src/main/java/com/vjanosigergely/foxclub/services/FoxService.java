@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FoxService {
-  ArrayList<Fox> foxList;
+  ArrayList<Fox> foxList = new ArrayList<>();
 
   public FoxService(){
 

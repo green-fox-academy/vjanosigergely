@@ -9,6 +9,7 @@
 <span>Please provide a name so you can associate it with your pet</span><br>
 <form
     th:action="@{/login}"
+    th:object="${fox}"
     th:method="POST"
 >
   <label for="name">Name</label>
@@ -16,6 +17,7 @@
       type="text"
       name="name"
       id="name"
+      th:field="*{name}"
       required
   />
   <button type="submit">Go</button>
