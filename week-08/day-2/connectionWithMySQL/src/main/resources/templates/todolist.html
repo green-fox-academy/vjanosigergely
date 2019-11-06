@@ -7,6 +7,15 @@
 <body>
 <h1> Todos for today</h1>
 <a href="/todo/add">Add new todo</a> <br>
+
+<div id = "SearchField"></div><!--SearchField-->
+<p class = "searchfield">Search for</p>
+<form action="/todo/search" method="POST">
+  <input type="text" name="searched" id="search" placeholder="...brooming, killing etc." required>
+  <button class = "searchfield">Search</button>
+</form>
+</div>
+
 <table>
   <tr>
     <th>ID</th>

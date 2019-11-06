@@ -1,0 +1,16 @@
+"Go through my POM file" pom.xml?
+MAVEN - Gradle  -dependencies
+
+
+@Entity
+@Table
+@Getter-Settere - Lombok
+
+@Id
+@GeneratedValue
+
+@Temporal
+
+
+@OneToONe(fetch = FetchType.Lazy) ??
+JoinColumn(name ="custom_id"

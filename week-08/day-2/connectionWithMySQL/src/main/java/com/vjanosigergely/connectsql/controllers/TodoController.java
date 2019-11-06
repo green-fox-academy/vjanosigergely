@@ -2,6 +2,9 @@ package com.vjanosigergely.connectsql.controllers;
 
 import com.vjanosigergely.connectsql.models.Todo;
 import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,6 +56,18 @@ public class TodoController {
   public String delete(@PathVariable(name = "id") Long id){
     myRepo.deleteById(id);
     return "redirect:/todo/list";
+  }
+
+  @PostMapping(value = "/search")
+  public String search(Model model, @RequestParam String searched){
+    List <Todo> searchedItems = new ArrayList();
+    myRepo.findAll().forEach(t -> searchedItems.add(t));
+    List <Todo> searched2 = searchedItems.stream()
+        .filter(todo -> todo.getTitle().toLowerCase().contains(searched.toLowerCase()))
+        .collect(Collectors.toList());
+
+    model.addAttribute("todos", searched2);
+    return "todolist";
   }
 
 
