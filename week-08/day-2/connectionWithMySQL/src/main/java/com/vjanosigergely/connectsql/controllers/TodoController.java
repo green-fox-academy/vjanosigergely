@@ -1,6 +1,7 @@
 package com.vjanosigergely.connectsql.controllers;
 
 import com.vjanosigergely.connectsql.models.Todo;
+import com.vjanosigergely.connectsql.repository.AssigneeRepo;
 import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TodoController {
 
   TodoRepoInterface myRepo;
+  AssigneeRepo assigneeRepo;
 
   @Autowired
   public TodoController(TodoRepoInterface todoRepoInterface){
@@ -54,7 +56,10 @@ public class TodoController {
 
   @GetMapping(value = "/delete/{id}")
   public String delete(@PathVariable(name = "id") Long id){
+
+    System.out.println("we are here");
     myRepo.deleteById(id);
+
     return "redirect:/todo/list";
   }
 

@@ -30,7 +30,7 @@ public class AssigneeController {
   }
 
   @GetMapping(value = "/add")
-  public String showAddForm(@ModelAttribute(name = "newassignee") Todo todo){
+  public String showAddForm(@ModelAttribute(name = "newassignee") Assignee assignee){
     return "addassignee";
   }
 

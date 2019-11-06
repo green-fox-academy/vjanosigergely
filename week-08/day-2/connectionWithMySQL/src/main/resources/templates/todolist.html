@@ -7,6 +7,8 @@
 <body>
 <h1> Todos for today</h1>
 <a href="/todo/add">Add new todo</a> <br>
+<a href="/todo/">Show All todos</a> <br>
+<a href="/assignee/list">Show assignees</a> <br>
 
 <div id = "SearchField"></div><!--SearchField-->
 <p class = "searchfield">Search for</p>
@@ -22,12 +24,14 @@
     <th>ACTION</th>
     <th>DONE</th>
     <th>URGENT</th>
+    <th>ASSIGNEE</th>
   </tr>
   <tr th:each="todo : ${todos}">
     <td th:text="${todo.getId()}" th:value="${todo.getId()}"></td>
     <td th:text="${todo.getTitle()}" th:value="${todo.getTitle()}"></td>
     <td th:text="${todo.isDone()}" th:value="${todo.isDone()}"></td>
     <td th:text="${todo.isUrgent()}" th:value="${todo.isUrgent()}"></td>
+    <td th:text="${todo.getAssignee()}" th:value="${todo.getAssignee()}"></td>
     <td><a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a></td>
 
   </tr>

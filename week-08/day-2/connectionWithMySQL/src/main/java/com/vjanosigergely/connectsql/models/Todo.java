@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Todo {
@@ -16,6 +17,8 @@ public class Todo {
   private String description;
   private boolean urgent = false;
   private boolean done = false;
+  @ManyToOne()
+  private Assignee assignee;
 
   public Todo(){
 
@@ -74,5 +77,13 @@ public class Todo {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }
