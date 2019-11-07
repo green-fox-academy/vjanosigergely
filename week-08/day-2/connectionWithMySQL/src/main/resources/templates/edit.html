@@ -6,9 +6,9 @@
 </head>
 <body>
 
-<h1>Add new Todo</h1>
+<h1>Edit Todo</h1>
 
-<form th:action="@{/todo/add}" method="post" th:object="${newtodo}">
+<form th:action="@{'/todo/edit/' + ${id}}" method="post" th:object="${todo}">
 
   <label for="title">Todo</label>
   <input
@@ -22,21 +22,19 @@
 
   <label for="urgent"></label>
   <input
-      type="radio"
-      value="true"
+      type="checkbox"
       name="urgent"
       id="urgent"
       th:field="*{urgent}"
-      required
+
   /> Urgent
   <input
-      type="radio"
-      value="false"
-      name="urgent"
-      id="urgent2"
-      th:field="*{urgent}"
-      required
-  /> Not Urgent <br>
+      type="checkbox"
+      name="done"
+      id="done"
+      th:field="*{done}"
+
+  /> Done <br>
   <select  th:field = "*{assigneeName}">
     <option th:each="assignee : ${assignees}" th:text="${assignee.getName()}" th:value="${assignee.getName()}"></option>
   </select>

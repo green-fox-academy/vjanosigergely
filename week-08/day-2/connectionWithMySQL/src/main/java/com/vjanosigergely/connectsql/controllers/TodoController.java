@@ -1,10 +1,12 @@
 package com.vjanosigergely.connectsql.controllers;
 
+import com.vjanosigergely.connectsql.models.Assignee;
 import com.vjanosigergely.connectsql.models.Todo;
 import com.vjanosigergely.connectsql.repository.AssigneeRepo;
 import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,9 @@ public class TodoController {
   AssigneeRepo assigneeRepo;
 
   @Autowired
-  public TodoController(TodoRepoInterface todoRepoInterface){
+  public TodoController(TodoRepoInterface todoRepoInterface, AssigneeRepo assigneeRepo){
     this.myRepo = todoRepoInterface;
+    this.assigneeRepo = assigneeRepo;
   }
 
   @GetMapping(value = {"/", "/list"})
@@ -44,21 +47,72 @@ public class TodoController {
   }
 
   @GetMapping(value = "/add")
-  public String showAddForm(@ModelAttribute(name = "newtodo") Todo todo){
+  public String showAddForm(Model model, @ModelAttribute(name = "newtodo") Todo todo){
+    List <Assignee> assignees = new ArrayList<>();
+        assigneeRepo.findAll().forEach(a -> assignees.add(a));
+    model.addAttribute("assignees",assignees);
     return "add";
   }
 
   @PostMapping(value = "/add")
   public String addNew(@ModelAttribute Todo todo){
+    List<Assignee> assignees = new ArrayList<>();
+    assigneeRepo.findAll().forEach(assignee -> assignees.add(assignee));
+    Assignee selected = assignees.stream().filter(assignee -> assignee.getName().equals(todo.getAssigneeName())).findFirst().orElse(null);
+    todo.setAssignee(selected);
     myRepo.save(todo);
     return "redirect:/todo/list";
   }
 
   @GetMapping(value = "/delete/{id}")
   public String delete(@PathVariable(name = "id") Long id){
+    Todo selected = myRepo.findById(id).orElse(null);
+    Iterable <Assignee> assignees =  assigneeRepo.findAll();
+    List <Assignee> assigneeList = new ArrayList<>();
+    assignees.forEach(f -> assigneeList.add(f));
+    List<Assignee> filteredAssignees =  assigneeList.stream().filter(a -> a.getTodos().contains(selected)).collect(
+        Collectors.toList());
+    for (int i = 0; i < filteredAssignees.size(); i++) {
+      List <Todo> todos = filteredAssignees.get(i).getTodos();
+      for (int j = 0; j < todos.size() ; j++) {
+        if (todos.get(j).equals(selected)){
+          todos.remove(todos.get(j));
+        }
+      }
+      //todos.remove(todos.get(id.intValue()-1));
+      assigneeRepo.save(filteredAssignees.get(i));
+    }
+    //selected.setAssignee(null);
+    //System.out.println("we are here");*/
+    myRepo.delete(selected);
 
-    System.out.println("we are here");
-    myRepo.deleteById(id);
+    return "redirect:/todo/list";
+  }
+
+  @GetMapping(value = "/edit/{id}")
+  public String showEdit(Model model, @PathVariable(name = "id") Long id){
+    List <Assignee> assignees = new ArrayList<>();
+    assigneeRepo.findAll().forEach(a -> assignees.add(a));
+    model.addAttribute("assignees",assignees);
+    Todo toModify = myRepo.findById(id).orElse(null);
+    model.addAttribute("todo",toModify);
+    return "edit";
+  }
+
+  @PostMapping(value = "/edit/{id}")
+  public String edit(@ModelAttribute Todo todo, @PathVariable(name = "id") Long id){
+    Assignee ofModified = myRepo.findById(id).get().getAssignee();
+    todo.setAssignee(ofModified);
+    List<Assignee> assignees = new ArrayList<>();
+    assigneeRepo.findAll().forEach(assignee -> assignees.add(assignee));
+    Assignee selected = assignees.stream().filter(assignee -> assignee.getName().equals(todo.getAssigneeName())).findFirst().orElse(null);
+    todo.setAssignee(selected);
+
+    /*Todo toModify = myRepo.findById(id).get();
+    toModify.setTitle(todo.getTitle());
+    toModify.setUrgent(todo.isUrgent());
+    toModify.setDone(todo.isDone());*/
+    myRepo.save(todo);
 
     return "redirect:/todo/list";
   }

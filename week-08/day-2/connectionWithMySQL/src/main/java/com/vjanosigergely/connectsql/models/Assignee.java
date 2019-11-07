@@ -13,12 +13,13 @@ import javax.persistence.OneToMany;
 @Entity
 public class Assignee {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private  long id;
   private String name;
   private String email;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "assignee", fetch = FetchType.EAGER)
+
+  @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "assignee", fetch = FetchType.EAGER)
   private List<Todo> todos;
 
   public Assignee() {

@@ -33,6 +33,7 @@
     <td th:text="${todo.isUrgent()}" th:value="${todo.isUrgent()}"></td>
     <td th:text="${todo.getAssignee()}" th:value="${todo.getAssignee()}"></td>
     <td><a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a></td>
+    <td><a th:href="@{'/todo/edit/' + ${todo.id}}">edit</a></td>
 
   </tr>
 </table>

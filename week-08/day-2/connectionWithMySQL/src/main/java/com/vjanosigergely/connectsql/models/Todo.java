@@ -1,5 +1,6 @@
 package com.vjanosigergely.connectsql.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,14 +12,14 @@ public class Todo {
 
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String title;
-  private String description;
   private boolean urgent = false;
   private boolean done = false;
   @ManyToOne()
   private Assignee assignee;
+  private String assigneeName;
 
   public Todo(){
 
@@ -30,12 +31,6 @@ public class Todo {
 
   public Todo(String title, boolean urgent) {
     this.title = title;
-    this.urgent = urgent;
-  }
-
-  public Todo(String title, String description, boolean urgent) {
-    this.title = title;
-    this.description = description;
     this.urgent = urgent;
   }
 
@@ -71,13 +66,6 @@ public class Todo {
     this.done = done;
   }
 
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
 
   public Assignee getAssignee() {
     return assignee;
@@ -85,5 +73,13 @@ public class Todo {
 
   public void setAssignee(Assignee assignee) {
     this.assignee = assignee;
+  }
+
+  public String getAssigneeName() {
+    return assigneeName;
+  }
+
+  public void setAssigneeName(String assigneeName) {
+    this.assigneeName = assigneeName;
   }
 }
