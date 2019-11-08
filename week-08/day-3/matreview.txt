@@ -14,3 +14,22 @@ MAVEN - Gradle  -dependencies
 
 @OneToONe(fetch = FetchType.Lazy) ??
 JoinColumn(name ="custom_id"
+
+Thats how the onetomanny happens -
+ we map it to one to one
+
+@MAnyToOne(fetch=FetchType.EAGER)
+
+CascadeType.Persist, CasCaseType.REmove
+
+
+truncate
+@SQL
+@Transactional
+
+Item mazda - Builder
+List items add (mazda)
+		add (popcorn)
+
+noargsconstructor
+allargsconstructor

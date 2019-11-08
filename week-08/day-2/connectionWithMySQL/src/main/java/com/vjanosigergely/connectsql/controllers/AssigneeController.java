@@ -4,6 +4,7 @@ import com.vjanosigergely.connectsql.models.Assignee;
 import com.vjanosigergely.connectsql.models.Todo;
 import com.vjanosigergely.connectsql.repository.AssigneeRepo;
 import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
+import com.vjanosigergely.connectsql.services.ToDoService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,11 +23,13 @@ public class AssigneeController {
 
   AssigneeRepo assigneeRepo;
   TodoRepoInterface myrepo;
+  ToDoService toDoService;
 
   @Autowired
-  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo){
+  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo, ToDoService toDoService){
     this.assigneeRepo = assigneeRepo;
     this.myrepo = myrepo;
+    this.toDoService = toDoService;
   }
 
   @GetMapping (value = {"/", "/list"})
@@ -50,35 +53,19 @@ public class AssigneeController {
   public String delete(@PathVariable(name = "id") Long id){
     Assignee selected = assigneeRepo.findById(id).orElse(null);
 
-    //List <Todo> nulltodoes = new ArrayList<>();
-
     List <Todo> todoes = selected.getTodos();
     for (int i = 0; i < todoes.size() ; i++) {
       todoes.get(i).setAssignee(null);
-      //nulltodoes.add(todoes.get(i));
-      //myrepo.save(todoes.get(i));
     }
-
     assigneeRepo.deleteById(id);
-/*
-    for (int i = 0; i < nulltodoes.size() ; i++) {
-      myrepo.save(nulltodoes.get(i));
-    }*/
-
-    /*Iterable <Todo> todos = myrepo.findAll();
-    List<Todo> todoList = new ArrayList<>();
-    todos.forEach(f -> todoList.add(f));
-    List<Todo> filteredTodos = todoList.stream().filter(todo -> todo.getAssignee().equals(selected)).collect(
-        Collectors.toList());
-    for (int i=0; i< filteredTodos.size(); i++){
-      filteredTodos.get(i).;
-      myrepo.save(filteredTodos.get(i));
-    }
-*/
-    //assigneeRepo.deleteById(id);
     return "redirect:/assignee/list";
   }
 
+  @GetMapping(value = "/{id}/todos")
+  public String listTodos(@PathVariable(name = "id") Long id, Model model){
+    model.addAttribute("todos", toDoService.findByAssignee(assigneeRepo.findById(id).orElse(null)));
+    return "todoList";
+  }
 
 
 }
