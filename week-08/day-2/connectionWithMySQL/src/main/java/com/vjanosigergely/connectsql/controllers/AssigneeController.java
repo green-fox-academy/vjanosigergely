@@ -4,10 +4,8 @@ import com.vjanosigergely.connectsql.models.Assignee;
 import com.vjanosigergely.connectsql.models.Todo;
 import com.vjanosigergely.connectsql.repository.AssigneeRepo;
 import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
-import com.vjanosigergely.connectsql.services.ToDoService;
-import java.util.ArrayList;
+import com.vjanosigergely.connectsql.services.TodoService;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,10 +21,10 @@ public class AssigneeController {
 
   AssigneeRepo assigneeRepo;
   TodoRepoInterface myrepo;
-  ToDoService toDoService;
+  TodoService toDoService;
 
   @Autowired
-  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo, ToDoService toDoService){
+  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo, TodoService toDoService){
     this.assigneeRepo = assigneeRepo;
     this.myrepo = myrepo;
     this.toDoService = toDoService;

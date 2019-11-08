@@ -19,9 +19,9 @@ public class PostController {
     this.postService = postService;
   }
 
-  @GetMapping(value = "/")
+  @GetMapping(value = {"/",""})
   public String showMain(Model model){
-    model.addAttribute("posts", postService.findAll());
+    model.addAttribute("posts", postService.findAllOrderByVotes());
     return "index";
   }
 

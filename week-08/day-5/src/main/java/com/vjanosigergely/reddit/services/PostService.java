@@ -49,4 +49,12 @@ public class PostService implements InterfacePostService {
     this.save(selected);
   }
 
+  @Override
+  public List<Post> findAllOrderByVotes() {
+    List<Post> topPosts = new ArrayList<>();
+    postRepo.findAllOrderByVotes().forEach(post -> topPosts.add(post));
+    return topPosts;
+  }
+
+
 }

@@ -12,17 +12,12 @@
 
 
 <table>
-  <!--tr>
-    <th>VOTES</th>
-    <th>+</th>
-    <th>-</th>
-    <th>TITLE</th>
-  </tr-->
   <tr th:each="post : ${posts}">
-    <td th:text="${post.votes}" th:value="${post.votes}"></td>
-     <td><a th:href="@{'/increase/' + ${post.id}}" >+</a></td>
+    <td th:text="${post.votes}" ></td>
+    <td><a th:href="@{'/increase/' + ${post.id}}" >+</a></td>
     <td><a th:href="@{'/decrease/' + ${post.id}}" >-</a></td>
     <td> <a th:text="${post.title}" th:value="${post.title}" th:href="${post.link}"></a></td>
+    <td th:text="${post.date}"></td>
   </tr>
 </table>
 
