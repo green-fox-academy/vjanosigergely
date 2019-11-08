@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<a href="/add">Submit new post</a> <br>
+<a href="/submit">Submit new post</a> <br>
 
 <h1> Trending posts </h1>
 
@@ -20,8 +20,8 @@
   </tr-->
   <tr th:each="post : ${posts}">
     <td th:text="${post.votes}" th:value="${post.votes}"></td>
-    <td><!--a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a-->+</td>
-    <td><!--a th:href="@{'/todo/edit/' + ${todo.id}}">edit</a-->-</td>
+     <td><a th:href="@{'/increase/' + ${post.id}}" >+</a></td>
+    <td><a th:href="@{'/decrease/' + ${post.id}}" >-</a></td>
     <td> <a th:text="${post.title}" th:value="${post.title}" th:href="${post.link}"></a></td>
   </tr>
 </table>

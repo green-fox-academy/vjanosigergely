@@ -8,4 +8,6 @@ List<Post> findAll();
   void save(Post post);
   void delete(Long id);
   Post findById(Long id);
+  void increaseById(Long id);
+  void decreseById(Long id);
 }

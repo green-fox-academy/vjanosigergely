@@ -35,5 +35,18 @@ public class PostService implements InterfacePostService {
     return postRepo.findById(id).orElse(null);
   }
 
+  @Override
+  public void increaseById(Long id){
+    Post selected = this.findById(id);
+    selected.setVotes(selected.getVotes() + 1);
+    this.save(selected);
+  }
+
+  @Override
+  public void decreseById(Long id) {
+    Post selected = this.findById(id);
+    selected.setVotes(selected.getVotes() - 1);
+    this.save(selected);
+  }
 
 }
