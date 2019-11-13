@@ -7,11 +7,13 @@ import com.vjanosigergely.frontend.Models.Log;
 import com.vjanosigergely.frontend.Models.LogEntryCounter;
 import com.vjanosigergely.frontend.Models.MyArray;
 import com.vjanosigergely.frontend.Models.MyError;
+import com.vjanosigergely.frontend.Models.MyText;
 import com.vjanosigergely.frontend.Models.ResultInteger;
 import com.vjanosigergely.frontend.Models.ResultIntegerList;
 import com.vjanosigergely.frontend.Models.Welcome;
 import com.vjanosigergely.frontend.services.ArrayService;
 import com.vjanosigergely.frontend.services.LogService;
+import com.vjanosigergely.frontend.services.SithReverser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +31,8 @@ public class APIController {
   ArrayService arrayService;
   @Autowired
   LogService logService;
+  @Autowired
+  SithReverser sithReverser;
 
   @GetMapping("/doubling")
   public ResponseEntity doubleValue(@RequestParam(name = "input", required = false) Integer input){
@@ -109,9 +113,16 @@ public class APIController {
   }
 
   @GetMapping("/log")
-  public ResponseEntity <?> showAllLogs(){
+  public ResponseEntity <LogEntryCounter> showAllLogs(){
     return  ResponseEntity.status(HttpStatus.OK).body(new LogEntryCounter(logService.findAll(),logService.findAll().size()));
   }
 
-
+  @PostMapping("/sith")
+  public ResponseEntity<?> sithReverser(@RequestBody(required = false) MyText myText){
+    if (myText == null ||myText.getText() == null || myText.getText() == ""){
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MyError("Feed me some text you have to, padawan young you are. Hmmm."));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(sithReverser.yodaSpeaker(myText.getText()));
+    }
+  }
 }
