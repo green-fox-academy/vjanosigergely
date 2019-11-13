@@ -3,14 +3,16 @@ package com.vjanosigergely.frontend.controllers;
 import com.vjanosigergely.frontend.Models.Appender;
 import com.vjanosigergely.frontend.Models.DoUntil;
 import com.vjanosigergely.frontend.Models.DoublePair;
+import com.vjanosigergely.frontend.Models.Log;
+import com.vjanosigergely.frontend.Models.LogEntryCounter;
 import com.vjanosigergely.frontend.Models.MyArray;
 import com.vjanosigergely.frontend.Models.MyError;
 import com.vjanosigergely.frontend.Models.ResultInteger;
 import com.vjanosigergely.frontend.Models.ResultIntegerList;
 import com.vjanosigergely.frontend.Models.Welcome;
 import com.vjanosigergely.frontend.services.ArrayService;
+import com.vjanosigergely.frontend.services.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,20 +27,26 @@ public class APIController {
 
   @Autowired
   ArrayService arrayService;
+  @Autowired
+  LogService logService;
 
   @GetMapping("/doubling")
   public ResponseEntity doubleValue(@RequestParam(name = "input", required = false) Integer input){
     if (input != null){
       DoublePair doublepair = new DoublePair(input);
+      logService.save(new Log("doubling","input = " + input.toString()));
       return ResponseEntity.status(HttpStatus.OK).body(doublepair);
     } else {
       MyError myError = new MyError("Please provide an input!");
+      logService.save(new Log("doubling","No input"));
       return ResponseEntity.status(HttpStatus.OK).body(myError);
     }
+
   }
 
   @GetMapping("/greeter")
   public ResponseEntity <?> greetUser(@RequestParam(required = false) String name, @RequestParam(required = false) String title){
+    logService.save(new Log("greeting", "name = " + name + " title = " + title));
     if (name != null && title != null){
       return ResponseEntity.status(HttpStatus.OK).body(new Welcome("Oh, hi there " + name + ", my dear " + title + "!"));
     } else if (title != null){
@@ -52,6 +60,7 @@ public class APIController {
 
   @GetMapping("/appenda/{appendable}")
   public ResponseEntity <?> appendA(@PathVariable(name = "appendable", required = false) String appendable){
+    logService.save(new Log("appenda","appendable = " + appendable));
     if (appendable != null){
       return ResponseEntity.status(HttpStatus.OK).body(new Appender(appendable));
     } else {
@@ -62,6 +71,7 @@ public class APIController {
   @PostMapping("dountil/{action}")
   public ResponseEntity <?> doUntil(@PathVariable(name = "action", required = false) String action, @RequestBody
       DoUntil doUntil){
+    logService.save(new Log("dountil","action = " + action + " doUntil = " + doUntil.getUntil()));
     if (doUntil == null ){
       return ResponseEntity.status(HttpStatus.OK).body(new MyError("Please provide a number!"));
     } else if (action.equals("sum")){
@@ -85,6 +95,7 @@ public class APIController {
 
   @PostMapping("/arrays")
   public ResponseEntity <?> arrayHandler(@RequestBody MyArray myArray){
+    logService.save(new Log("arrays", " what = " + myArray.getWhat() + " numbers = " + myArray.getNumbers()));
     if (myArray.getWhat().equals("sum")){
       return ResponseEntity.status(HttpStatus.OK).body(new ResultInteger(arrayService.addArrayNumbers(myArray)));
     } else if (myArray.getWhat().equals("multiply")){
@@ -95,6 +106,11 @@ public class APIController {
       return ResponseEntity.status(HttpStatus.OK).body(new MyError(" Please provide what to do with the numbers!"));
     }
 
+  }
+
+  @GetMapping("/log")
+  public ResponseEntity <?> showAllLogs(){
+    return  ResponseEntity.status(HttpStatus.OK).body(new LogEntryCounter(logService.findAll(),logService.findAll().size()));
   }
 
 
