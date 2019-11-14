@@ -11,4 +11,5 @@ public interface TodoRepoInterface extends CrudRepository<Todo,Long> {
 List<Todo> findAllByDoneIsFalse();
 List<Todo> findAll();
 List<Todo> findAllByAssignee(Assignee assignee);
+void deleteById(Long id);
 }

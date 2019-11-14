@@ -1,6 +1,7 @@
 package com.vjanosigergely.connectsql.models;
 
-import javax.persistence.CascadeType;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,21 +18,25 @@ public class Todo {
   private String title;
   private boolean urgent = false;
   private boolean done = false;
+  private String creationDate;
+  private String dueDate;
   @ManyToOne()
   private Assignee assignee;
   private String assigneeName;
 
   public Todo(){
-
+    creationDate = generateDate();
   }
 
   public Todo(String title) {
     this.title = title;
+    creationDate = generateDate();
   }
 
   public Todo(String title, boolean urgent) {
     this.title = title;
     this.urgent = urgent;
+    creationDate = generateDate();
   }
 
   public long getId() {
@@ -81,5 +86,31 @@ public class Todo {
 
   public void setAssigneeName(String assigneeName) {
     this.assigneeName = assigneeName;
+  }
+
+  public String getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(String creationDate) {
+    this.creationDate = creationDate;
+  }
+
+  public String getDueDate() {
+    if(dueDate != null){
+    return dueDate;
+    }  else {
+      return "";
+    }
+  }
+
+  public void setDueDate(String dueDate) {
+    this.dueDate = dueDate;
+  }
+
+  public String generateDate(){
+      DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+    String formattedDate = formatter.format(LocalDate.now());
+    return formattedDate;
   }
 }

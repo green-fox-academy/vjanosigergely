@@ -4,6 +4,7 @@ import com.vjanosigergely.connectsql.models.Assignee;
 import com.vjanosigergely.connectsql.models.Todo;
 import com.vjanosigergely.connectsql.repository.AssigneeRepo;
 import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
+import com.vjanosigergely.connectsql.services.AssigneeService;
 import com.vjanosigergely.connectsql.services.TodoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,19 @@ public class AssigneeController {
   AssigneeRepo assigneeRepo;
   TodoRepoInterface myrepo;
   TodoService toDoService;
+  AssigneeService assigneeService;
 
   @Autowired
-  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo, TodoService toDoService){
+  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo, TodoService toDoService, AssigneeService assigneeService){
     this.assigneeRepo = assigneeRepo;
     this.myrepo = myrepo;
     this.toDoService = toDoService;
+    this.assigneeService = assigneeService;
   }
 
   @GetMapping (value = {"/", "/list"})
   public String showAssignees(Model model){
-    model.addAttribute("assignees",assigneeRepo.findAll());
+    model.addAttribute("assignees",assigneeService.findAll());
     return "assigneelist";
   }
 
@@ -43,7 +46,7 @@ public class AssigneeController {
 
   @PostMapping(value = "/add")
   public String addNew(@ModelAttribute Assignee assignee){
-    assigneeRepo.save(assignee);
+    assigneeService.save(assignee);
     return "redirect:/assignee/list";
   }
 
