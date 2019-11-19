@@ -1,12 +1,8 @@
 package com.vjanosigergely.connectsql.controllers;
 
 import com.vjanosigergely.connectsql.models.Assignee;
-import com.vjanosigergely.connectsql.models.Todo;
-import com.vjanosigergely.connectsql.repository.AssigneeRepo;
-import com.vjanosigergely.connectsql.repository.TodoRepoInterface;
 import com.vjanosigergely.connectsql.services.AssigneeService;
 import com.vjanosigergely.connectsql.services.TodoService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/assignee")
 public class AssigneeController {
 
-  AssigneeRepo assigneeRepo;
-  TodoRepoInterface myrepo;
+
   TodoService toDoService;
   AssigneeService assigneeService;
 
   @Autowired
-  AssigneeController(AssigneeRepo assigneeRepo, TodoRepoInterface myrepo, TodoService toDoService, AssigneeService assigneeService){
-    this.assigneeRepo = assigneeRepo;
-    this.myrepo = myrepo;
+  AssigneeController(TodoService toDoService, AssigneeService assigneeService){
     this.toDoService = toDoService;
     this.assigneeService = assigneeService;
   }
@@ -52,21 +45,14 @@ public class AssigneeController {
 
   @GetMapping(value = "/delete/{id}")
   public String delete(@PathVariable(name = "id") Long id){
-    Assignee selected = assigneeRepo.findById(id).orElse(null);
-
-    List <Todo> todoes = selected.getTodos();
-    for (int i = 0; i < todoes.size() ; i++) {
-      todoes.get(i).setAssignee(null);
-    }
-    assigneeRepo.deleteById(id);
+    assigneeService.deleteById(id);
     return "redirect:/assignee/list";
   }
 
   @GetMapping(value = "/{id}/todos")
   public String listTodos(@PathVariable(name = "id") Long id, Model model){
-    model.addAttribute("todos", toDoService.findByAssignee(assigneeRepo.findById(id).orElse(null)));
+    model.addAttribute("todos", toDoService.findByAssignee(assigneeService.findById(id)));
     return "todoList";
   }
-
 
 }

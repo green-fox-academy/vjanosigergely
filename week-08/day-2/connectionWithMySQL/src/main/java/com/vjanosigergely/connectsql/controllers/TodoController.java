@@ -25,7 +25,7 @@ public class TodoController {
   AssigneeService assigneeService;
 
   @Autowired
-  public TodoController(TodoRepoInterface todoRepoInterface, AssigneeRepo assigneeRepo, TodoService todoService, AssigneeService assigneeService){
+  public TodoController(TodoService todoService, AssigneeService assigneeService){
     this.todoService = todoService;
     this.assigneeService = assigneeService;
   }

@@ -3,23 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Posts</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 
-<a href="/submit">Submit new post</a> <br>
+<h1 th:text ="|Current user ${username}|"></h1>
 
-<h1> Trending posts </h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <a th:href="@{'/' + ${username} + '/submit'}" class="btn btn-danger">Submit new post</a> <br>
+    <h1>Trending Posts</h1>
+  </div>
+</div>
 
-
-<table>
-  <tr th:each="post : ${posts}">
-    <td th:text="${post.votes}" ></td>
-    <td><a th:href="@{'/increase/' + ${post.id}}" >+</a></td>
-    <td><a th:href="@{'/decrease/' + ${post.id}}" >-</a></td>
-    <td> <a th:text="${post.title}" th:value="${post.title}" th:href="${post.link}"></a></td>
-    <td th:text="${post.date}"></td>
-  </tr>
-</table>
-
+<div class="container">
+  <div class="row justify-content-center">
+    <table>
+      <tr th:each="post : ${posts}">
+        <td th:text="${post.votes}"></td>
+        <td><a th:href="@{'/increase/' + ${post.id}}">+</a></td>
+        <td><a th:href="@{'/decrease/' + ${post.id}}">-</a></td>
+        <td><a th:text="${post.title}" th:value="${post.title}" th:href="${post.link}"></a></td>
+        <td th:text="${post.date}"></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+<a th:if="${page} >= 2" th:href="@{'/' + ${username} + '/' + ${page - 1}}"  class="btn btn-success">Previous page</a>
+<a th:href="@{'/'+ ${username} + '/' + ${page + 1}}"  class="btn btn-success">Next Page</a> <br>
+  </div>
+</div>
 </body>
 </html>

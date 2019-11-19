@@ -50,9 +50,9 @@ public class PostService implements InterfacePostService {
   }
 
   @Override
-  public List<Post> findAllOrderByVotes() {
+  public List<Post> findAllOrderByVotes(Integer page) {
     List<Post> topPosts = new ArrayList<>();
-    postRepo.findAllOrderByVotes().forEach(post -> topPosts.add(post));
+    postRepo.findAllOrderByVotes(10*(page-1)).forEach(post -> topPosts.add(post));
     return topPosts;
   }
 

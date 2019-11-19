@@ -5,10 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -23,14 +23,17 @@ public class Post {
   private int votes;
   @Temporal(TemporalType.TIMESTAMP)
   private Date date;
+  @ManyToOne
+  private User postOwner;
 
   public Post(){
     this.date = new Date();
   }
 
-  public Post(String title, String link){
+  public Post(String title, String link, User user){
     this.title = title;
     this.link = link;
+    this.postOwner = user;
     this.date = new Date();
   }
 

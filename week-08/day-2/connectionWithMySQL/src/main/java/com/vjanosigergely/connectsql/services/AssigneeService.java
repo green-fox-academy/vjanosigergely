@@ -21,6 +21,20 @@ public class AssigneeService {
     assigneeRepo.save(assignee);
   }
 
+  public Assignee findById(Long id){
+    return assigneeRepo.findById(id).orElse(null);
+  }
+
+  public void deleteById(Long id){
+    Assignee selected = assigneeRepo.findById(id).orElse(null);
+
+    List <Todo> todoes = selected.getTodos();
+    for (int i = 0; i < todoes.size() ; i++) {
+      todoes.get(i).setAssignee(null);
+    }
+    assigneeRepo.deleteById(id);
+  }
+
   public Assignee inputName(Todo todo){
     List<Assignee> assignees = new ArrayList<>();
     assigneeRepo.findAll().forEach(assignee -> assignees.add(assignee));

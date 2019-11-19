@@ -2,6 +2,7 @@ package com.vjanosigergely.reddit.controllers;
 
 import com.vjanosigergely.reddit.models.Post;
 import com.vjanosigergely.reddit.services.PostService;
+import com.vjanosigergely.reddit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,27 +14,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PostController {
   private PostService postService;
+  private UserService userService;
 
   @Autowired
-  public PostController(PostService postService){
+  public PostController(PostService postService, UserService userService){
     this.postService = postService;
+    this.userService = userService;
   }
 
-  @GetMapping(value = {"/",""})
-  public String showMain(Model model){
-    model.addAttribute("posts", postService.findAllOrderByVotes());
+  @GetMapping(value = {"/{username}", "/{username}/{page}"})
+  public String showMain(@PathVariable (name = "username", required = false) String username, @PathVariable (name = "page", required = false) Integer page, Model model){
+    if (page == null || page == 0){
+      page = 1;
+    }
+
+    model.addAttribute("posts", postService.findAllOrderByVotes(page));
+    model.addAttribute("page",page);
+    model.addAttribute("username", username);
     return "index";
   }
 
-  @GetMapping(value = "/submit")
-  public String showSubmit(@ModelAttribute(name = "newpost") Post newPost){
+  @GetMapping(value = "/{username}/submit")
+  public String showSubmit(@PathVariable(name = "username") String username, @ModelAttribute(name = "newpost") Post newPost){
     return "submit";
   }
 
-  @PostMapping(value="/submit")
-  public String submitNew(@ModelAttribute Post newPost){
+  @PostMapping(value="/{username}/submit")
+  public String submitNew(@PathVariable(name = "username") String username, @ModelAttribute Post newPost){
+    newPost.setPostOwner(userService.findByUsername(username));
     postService.save(newPost);
-    return "redirect:/";
+    return "redirect:/{username}";
   }
 
   @GetMapping(value = "/increase/{id}")

@@ -3,6 +3,7 @@ package com.vjanosigergely.reddit.services;
 import com.vjanosigergely.reddit.models.Post;
 import java.util.List;
 
+
 public interface InterfacePostService {
 
   List<Post> findAll();
@@ -17,5 +18,5 @@ public interface InterfacePostService {
 
   void decreseById(Long id);
 
-  List<Post> findAllOrderByVotes();
+  List<Post> findAllOrderByVotes(Integer page);
 }

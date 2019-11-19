@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Todo {
 
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;

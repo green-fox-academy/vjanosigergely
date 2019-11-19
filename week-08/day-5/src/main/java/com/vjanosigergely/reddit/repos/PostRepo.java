@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostRepo extends CrudRepository<Post,Long>{
-List<Post> findById(long id);
-@Query(value = "select * from post order by votes desc Limit 0, 10",nativeQuery = true)
-List<Post> findAllOrderByVotes();
+
+@Query(value = "select * from post order by votes desc limit ?1 , 10", nativeQuery = true)
+List <Post> findAllOrderByVotes(int start);
 }

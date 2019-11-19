@@ -1,9 +1,7 @@
 package com.vjanosigergely.frontend.services;
 
-import com.vjanosigergely.frontend.Models.MyText;
 import com.vjanosigergely.frontend.Models.SithText;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Service;

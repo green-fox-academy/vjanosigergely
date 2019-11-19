@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Submit a new post</h1>
-<form th:action="@{/submit}" method="post" th:object="${newpost}">
+<form th:action="@{'/' + ${username} + '/submit'}" method="post" th:object="${newpost}">
   <label for="title">Title</label>
   <input
       type="text"
